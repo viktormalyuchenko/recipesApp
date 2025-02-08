@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои рецепты</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Мои кулинарные шедевры</h1>
+        <p>Коллекция любимых рецептов</p>
+    </header>
+
+    <main>
+        <div id="recipe-list" class="recipe-list">
+            <!-- Рецепты будут добавлены сюда с помощью JavaScript -->
+        </div>
+
+        <div id="recipe-details" class="recipe-details">
+            <button id="back-button" class="back-button">← Назад к списку</button>
+            <h2 id="recipe-title"></h2>
+            <section id="recipe-ingredients"></section>
+            <section id="recipe-instructions"></section>
+            <section id="recipe-media"></section>
+            <section id="recipe-notes"></section>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2023 Мои рецепты</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

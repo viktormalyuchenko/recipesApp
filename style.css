@@ -1,0 +1,147 @@
+/* Общие стили */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Современный шрифт */
+    line-height: 1.6;
+    margin: 0; /* Убираем отступы по умолчанию */
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+header, footer {
+    background-color: #007bff; /* Синий цвет */
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+h1, h2 {
+    font-weight: 600; /* Более жирный шрифт */
+}
+
+/* Стили для списка рецептов */
+.recipe-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Адаптивная сетка */
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.recipe-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Обрезаем содержимое, выходящее за границы */
+    transition: transform 0.2s ease-in-out; /* Плавная анимация при наведении */
+}
+
+.recipe-item:hover {
+    transform: translateY(-5px); /* Приподнимаем карточку при наведении */
+}
+
+.recipe-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Обрезаем изображение, сохраняя пропорции */
+    border-bottom: 1px solid #eee;
+}
+
+.recipe-item-content {
+    padding: 1rem;
+}
+.recipe-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.recipe-item h2 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.recipe-item p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.recipe-item button {
+    background-color: #28a745; /* Зеленый цвет */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.recipe-item button:hover {
+    background-color: #218838; /* Темно-зеленый при наведении */
+}
+
+/* Стили для детальной информации о рецепте */
+.recipe-details {
+    display: none; /* Скрыто по умолчанию */
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-details.active {
+    display: block;
+}
+
+.recipe-details h2 {
+    margin-top: 0;
+    font-size: 1.75rem;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.recipe-details section {
+    margin-bottom: 1.5rem;
+}
+
+.recipe-details ul, .recipe-details ol {
+    padding-left: 1.5rem;
+}
+
+.recipe-details li {
+    margin-bottom: 0.5rem;
+}
+
+.recipe-details img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+#recipe-media iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    border: none; /* Убираем рамку */
+    border-radius: 8px;
+    display: block;
+    margin: 1rem auto;
+}
+
+.back-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.back-button:hover {
+    background-color: #0056b3; /* Темно-синий при наведении */
+}
