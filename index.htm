@@ -14,11 +14,14 @@
         <h1>Мои кулинарные шедевры</h1>
         <p>Коллекция любимых рецептов</p>
         <input type="text" id="search-input" placeholder="Поиск...">
+        <div id="category-filters" class="category-filters">
+            <!-- Здесь будут кнопки фильтрации по категориям -->
+        </div>
     </header>
 
     <main class="container">
         <div id="recipe-list" class="recipe-list">
-            <!-- Рецепты будут добавлены сюда с помощью JavaScript -->
+            <!-- Рецепты -->
         </div>
 
         <div id="recipe-details" class="recipe-details">
@@ -28,11 +31,12 @@
             <section id="recipe-instructions"></section>
             <section id="recipe-media"></section>
             <section id="recipe-notes"></section>
+            <div id="recipe-categories"></div>
         </div>
     </main>
 
     <footer class="container">
-        <p>© 2024 Мои рецепты</p>
+        <p>© <span id="current-year"></span> Мои рецепты</p>
     </footer>
 
     <script src="scripts/script.js"></script>

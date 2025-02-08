@@ -5,26 +5,23 @@ exports.handler = async (event, context) => {
   try {
     const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID);
     const records = await base('Recipes').select({
-        //Можно настроить сортировку, фильтрацию и т.д.
-        // sort: [{field: "id", direction: "asc"}],
-        view: "Grid view" //Укажите название представления, если используете не "Grid view"
+        view: "Grid view" // Или ваше представление
     }).all();
 
     const recipes = records.map(record => {
-        //Преобразуем данные из формата Airtable в наш формат
         return {
             id: record.fields.id,
             title: record.fields.title,
             ingredients: record.fields.ingredients,
             instructions: record.fields.instructions,
             youtube: record.fields.youtube,
-            //Важно:  Airtable возвращает массив объектов для attachments
-            image: record.fields.image ? record.fields.image[0].url : null, //Берем URL первого изображения
+            image: record.fields.image ? record.fields.image[0].url : null,
             notes: record.fields.notes,
-            description: record.fields.description
+            description: record.fields.description,
+            // Добавляем категории
+            categories: record.fields.categories || [], // Если категорий нет, возвращаем пустой массив
         };
     });
-
 
     return {
       statusCode: 200,
