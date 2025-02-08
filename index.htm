@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мои рецепты</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <header>
+    <header class="container">
         <h1>Мои кулинарные шедевры</h1>
         <p>Коллекция любимых рецептов</p>
+        <input type="text" id="search-input" placeholder="Поиск...">
     </header>
 
-    <main>
+    <main class="container">
         <div id="recipe-list" class="recipe-list">
             <!-- Рецепты будут добавлены сюда с помощью JavaScript -->
         </div>
@@ -27,11 +31,10 @@
         </div>
     </main>
 
-    <footer>
-        <p>© 2023 Мои рецепты</p>
+    <footer class="container">
+        <p>© 2024 Мои рецепты</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="script.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>
