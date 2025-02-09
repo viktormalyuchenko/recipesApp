@@ -1,5 +1,5 @@
 let recipes = [];
-let allCategories = []; // Массив для хранения *всех* уникальных категорий
+let allCategories = [];
 
 const recipeListDiv = document.getElementById("recipe-list");
 const recipeDetailsDiv = document.getElementById("recipe-details");
@@ -11,11 +11,11 @@ const recipeNotes = document.getElementById("recipe-notes");
 const backButton = document.getElementById("back-button");
 const searchInput = document.getElementById("search-input");
 const categoryFiltersDiv = document.getElementById("category-filters");
-const recipeCategoriesDiv = document.getElementById("recipe-categories"); // Добавили
+const recipeCategoriesDiv = document.getElementById("recipe-categories");
 
-// Функция для отображения списка рецептов
+// Функция для отображения списка рецептов (принимает массив)
 function displayRecipeList(recipeArray = recipes) {
-    recipeListDiv.innerHTML = ""; // Очищаем
+    recipeListDiv.innerHTML = "";
 
     if (recipeArray.length === 0) {
         recipeListDiv.innerHTML = "<p>Рецепты не найдены.</p>";
@@ -26,7 +26,6 @@ function displayRecipeList(recipeArray = recipes) {
         const recipeItem = document.createElement("div");
         recipeItem.classList.add("recipe-item");
 
-        // Добавляем категории на карточку (если есть)
         let categoriesHTML = '';
         if (recipe.categories && recipe.categories.length > 0) {
             categoriesHTML = `<div class="recipe-categories">`;
@@ -35,12 +34,13 @@ function displayRecipeList(recipeArray = recipes) {
             });
             categoriesHTML += `</div>`;
         }
+
         recipeItem.innerHTML = `
-            ${recipe.image ? `<img src="${recipe.image}" alt="${recipe.title}">` : ''}
+            ${recipe.image ? `<img src="${recipe.image}" alt="${recipe.title}" loading="lazy">` : ''}
             <div class="recipe-item-content">
                 <a href="#"><h2>${recipe.title}</h2></a>
                 <p>${recipe.description || ""}</p>
-                 ${categoriesHTML}
+                ${categoriesHTML}
                 <button data-id="${recipe.id}">Подробнее</button>
             </div>
         `;
@@ -57,27 +57,30 @@ function displayRecipeList(recipeArray = recipes) {
 
 // Функция для отображения деталей рецепта
 function showRecipeDetails(recipeId) {
-  // ... (предыдущий код showRecipeDetails) ...
-   const recipe = recipes.find(r => r.id === parseInt(recipeId));
+    const recipe = recipes.find(r => r.id === parseInt(recipeId));
     if (!recipe) {
-      console.error("Рецепт не найден:", recipeId);
-      return;
+        console.error("Рецепт не найден:", recipeId);
+        return;
     }
 
-    fillRecipeDetails(recipe); //Заполняем данными
+    fillRecipeDetails(recipe);
 
     recipeListDiv.style.display = "none";
     recipeDetailsDiv.classList.add("active");
     window.scrollTo(0, 0);
 }
 
-// Функция для заполнения деталей рецепта (чтобы не дублировать код)
+// Функция для заполнения деталей рецепта
 function fillRecipeDetails(recipe) {
     recipeTitle.textContent = recipe.title;
 
     recipeIngredients.innerHTML = "<h2>Ингредиенты</h2>";
     const ingredientsList = document.createElement("ul");
-    const ingredientsArray = Array.isArray(recipe.ingredients) ? recipe.ingredients : (recipe.ingredients ? recipe.ingredients.split('\n') : []);
+    const ingredientsArray = Array.isArray(recipe.ingredients)
+        ? recipe.ingredients
+        : recipe.ingredients
+            ? recipe.ingredients.split("\n")
+            : [];
     ingredientsArray.forEach(ingredient => {
         const listItem = document.createElement("li");
         listItem.textContent = ingredient;
@@ -87,7 +90,11 @@ function fillRecipeDetails(recipe) {
 
     recipeInstructions.innerHTML = "<h2>Приготовление</h2>";
     const instructionsList = document.createElement("ol");
-    const instructionsArray = Array.isArray(recipe.instructions) ? recipe.instructions : (recipe.instructions ? recipe.instructions.split('\n') : []);
+    const instructionsArray = Array.isArray(recipe.instructions)
+        ? recipe.instructions
+        : recipe.instructions
+            ? recipe.instructions.split("\n")
+            : [];
     instructionsArray.forEach(step => {
         const listItem = document.createElement("li");
         listItem.textContent = step;
@@ -100,6 +107,7 @@ function fillRecipeDetails(recipe) {
         const image = document.createElement("img");
         image.src = recipe.image;
         image.alt = recipe.title;
+        image.loading = "lazy";
         recipeMedia.appendChild(image);
     }
 
@@ -115,19 +123,17 @@ function fillRecipeDetails(recipe) {
     notesPara.textContent = recipe.notes || "";
     recipeNotes.appendChild(notesPara);
 
-     //Категории в деталях
     recipeCategoriesDiv.innerHTML = "<h2>Категории</h2>";
-    if(recipe.categories && recipe.categories.length > 0){
+    if (recipe.categories && recipe.categories.length > 0) {
         const categoriesList = document.createElement("ul");
         recipe.categories.forEach(category => {
-          const listItem = document.createElement("li");
-          listItem.textContent = category;
-          categoriesList.appendChild(listItem);
+            const listItem = document.createElement("li");
+            listItem.textContent = category;
+            categoriesList.appendChild(listItem);
         });
         recipeCategoriesDiv.appendChild(categoriesList);
-
     } else {
-      recipeCategoriesDiv.innerHTML += "<p>Категории не указаны</p>";
+        recipeCategoriesDiv.innerHTML += "<p>Категории не указаны</p>";
     }
 }
 
@@ -161,37 +167,35 @@ async function loadRecipes() {
             }
         });
 
-        displayRecipeList();      // Отображаем список
-        displayCategoryFilters(); // Отображаем фильтры категорий
+        displayRecipeList();
+        displayCategoryFilters();
 
     } catch (error) {
         console.error("Ошибка загрузки рецептов:", error);
-        recipeListDiv.innerHTML = `<p>Не удалось загрузить рецепты. Попробуйте обновить страницу или зайти позже.</p>`;
+        recipeListDiv.innerHTML = `<p>Не удалось загрузить рецепты.  Попробуйте обновить страницу или зайти позже.</p>`;
     }
 }
 
 // Функция для отображения кнопок фильтрации по категориям
 function displayCategoryFilters() {
-    categoryFiltersDiv.innerHTML = ""; // Очищаем
+    categoryFiltersDiv.innerHTML = "";
 
-    // Кнопка "Все рецепты"
     const allButton = document.createElement("button");
     allButton.textContent = "Все рецепты";
-    allButton.classList.add("category-button", "active"); // Активная кнопка по умолчанию
+    allButton.classList.add("category-button", "active");
     allButton.addEventListener("click", () => {
-        displayRecipeList(); // Показываем все рецепты
-        setActiveCategoryButton(allButton); // Делаем кнопку активной
+        displayRecipeList();
+        setActiveCategoryButton(allButton);
     });
     categoryFiltersDiv.appendChild(allButton);
 
-    // Кнопки для каждой категории
     allCategories.forEach(category => {
         const button = document.createElement("button");
         button.textContent = category;
         button.classList.add("category-button");
         button.addEventListener("click", () => {
-            filterByCategory(category);  // Фильтруем по категории
-            setActiveCategoryButton(button); // Делаем кнопку активной
+            filterByCategory(category);
+            setActiveCategoryButton(button);
         });
         categoryFiltersDiv.appendChild(button);
     });
@@ -207,11 +211,8 @@ function filterByCategory(category) {
 
 // Функция для установки активной кнопки категории
 function setActiveCategoryButton(activeButton) {
-    // Убираем класс "active" у всех кнопок
     const buttons = document.querySelectorAll(".category-button");
     buttons.forEach(button => button.classList.remove("active"));
-
-    // Добавляем класс "active" к нажатой кнопке
     activeButton.classList.add("active");
 }
 
@@ -225,39 +226,45 @@ backButton.addEventListener("click", () => {
 
 // Обработчик изменения хеша
 function handleHashChange() {
-  // ... (предыдущий код) ...
     const hash = window.location.hash;
     if (hash.startsWith("#recipe-")) {
         const recipeId = hash.substring(8);
         showRecipeDetails(recipeId);
     } else {
-      recipeDetailsDiv.classList.remove("active");
-      recipeListDiv.style.display = "grid";
+        recipeDetailsDiv.classList.remove("active");
+        recipeListDiv.style.display = "grid";
+
     }
 }
 
 // Обработчик ввода в поле поиска
 searchInput.addEventListener("input", () => {
- // ... (предыдущий код) ...
-  const searchTerm = searchInput.value.toLowerCase();
+    const searchTerm = searchInput.value.toLowerCase();
     const filteredRecipes = recipes.filter(recipe => {
-      //Добавил поиск и по категориям
         return (
             recipe.title.toLowerCase().includes(searchTerm) ||
-            (recipe.description && recipe.description.toLowerCase().includes(searchTerm)) ||
-            (recipe.ingredients && Array.isArray(recipe.ingredients) && recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchTerm))) ||
-            (recipe.ingredients && typeof recipe.ingredients === 'string' && recipe.ingredients.toLowerCase().includes(searchTerm))||
-            (recipe.categories && recipe.categories.some(cat => cat.toLowerCase().includes(searchTerm)))
-
+            (recipe.description &&
+                recipe.description.toLowerCase().includes(searchTerm)) ||
+            (recipe.ingredients &&
+                Array.isArray(recipe.ingredients) &&
+                recipe.ingredients.some(ingredient =>
+                    ingredient.toLowerCase().includes(searchTerm)
+                )) ||
+            (recipe.ingredients &&
+                typeof recipe.ingredients === "string" &&
+                recipe.ingredients.toLowerCase().includes(searchTerm)) ||
+            (recipe.categories &&
+                recipe.categories.some(cat => cat.toLowerCase().includes(searchTerm)))
         );
     });
     displayRecipeList(filteredRecipes);
+
 });
 
-// Динамический год в подвале
+// Динамический год
 document.getElementById("current-year").textContent = new Date().getFullYear();
 
-// Загрузка данных и обработка хеша при старте
+// Загрузка данных
 loadRecipes().then(() => {
     handleHashChange();
     window.addEventListener("hashchange", handleHashChange);

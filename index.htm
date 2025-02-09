@@ -3,20 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мои рецепты</title>
+    <title>Мои кулинарные шедевры | Коллекция лучших рецептов</title>
+    <meta name="description" content="Лучшие рецепты на любой вкус: от простых завтраков до изысканных ужинов. Пошаговые инструкции, фото, видео и удобный поиск!">
+    <meta name="keywords" content="рецепты, кулинария, еда, блюда, завтраки, обеды, ужины, выпечка, десерты, салаты, супы, напитки">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Мои кулинарные шедевры">
+    <meta property="og:description" content="Лучшие рецепты на любой вкус: от простых завтраков до изысканных ужинов.">
+    <meta property="og:image" content="https://example.com/your-og-image.jpg">
+    <meta property="og:url" content="https://your-domain.com/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Мои кулинарные шедевры">
+    <meta name="twitter:description" content="Лучшие рецепты на любой вкус: от простых завтраков до изысканных ужинов.">
+    <meta name="twitter:image" content="https://example.com/your-twitter-image.jpg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+     <!-- Выберите другие шрифты, если хотите -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <header class="container">
-        <h1>Мои кулинарные шедевры</h1>
-        <p>Коллекция любимых рецептов</p>
-        <input type="text" id="search-input" placeholder="Поиск...">
-        <div id="category-filters" class="category-filters">
-            <!-- Здесь будут кнопки фильтрации по категориям -->
+    <header class="header container">
+         <div class="header-top">
+            <h1>Мои рецепты</h1>
+              <div id="category-filters" class="category-filters">
+                <!-- Фильтры категорий -->
+            </div>
         </div>
+
+        <div class="search-wrapper">
+            <input type="text" id="search-input" placeholder="Поиск рецептов...">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+
     </header>
 
     <main class="container">
@@ -25,7 +49,7 @@
         </div>
 
         <div id="recipe-details" class="recipe-details">
-            <button id="back-button" class="back-button">← Назад к списку</button>
+            <button id="back-button" class="back-button">← Назад</button>
             <h2 id="recipe-title"></h2>
             <section id="recipe-ingredients"></section>
             <section id="recipe-instructions"></section>
@@ -35,8 +59,15 @@
         </div>
     </main>
 
-    <footer class="container">
+    <footer class="footer">
+      <div class="container">
+        <section id="about" class="about">
+            <h2>О сайте</h2>
+            <p>Этот сайт – моя кулинарная книга, где я собираю самые удачные и любимые рецепты. Здесь вы найдете блюда на любой вкус: от простых и быстрых завтраков до праздничных ужинов. Все рецепты проверены мной лично, и я с удовольствием делюсь ими с вами!</p>
+        </section>
         <p>© <span id="current-year"></span> Мои рецепты</p>
+      </div>
+
     </footer>
 
     <script src="scripts/script.js"></script>
