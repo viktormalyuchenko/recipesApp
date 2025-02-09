@@ -190,12 +190,13 @@
     font-size: 1rem;
     align-self: flex-start;
     margin-top: auto;
-  }
-  
-  .recipe-item button:hover {
+}
+
+.recipe-item button:hover {
     background-color: darken(var(--primary-color), 10%);
+    color: var(--secondary-color); /* Темно-серый текст при наведении */
     transform: scale(1.05);
-  }
+}
   
   /* Категории на карточке рецепта */
   .recipe-categories {
@@ -313,12 +314,14 @@
     margin-bottom: 1rem;
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
     font-size: 1rem;
-  }
-  
-  .back-button:hover {
+}
+
+.back-button:hover {
     background-color: darken(var(--secondary-color), 10%);
+    color: var(--light-gray); /* Светло-серый текст при наведении */
     transform: scale(1.05);
-  }
+}
+
   
   /* Спиннер */
   .loader {
