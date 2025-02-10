@@ -1,398 +1,424 @@
 /* Общие стили */
 :root {
-    /* Цветовая палитра */
-    --primary-color: #ff5733; /* Оранжевый (пример) */
-    --secondary-color: #343a40; /* Темно-серый */
-    --accent-color: #c92a2a; /* Красный (пример) */
-    --background-color: #f8f9fa;
-    --text-color: #212529;
-    --light-gray: #e9ecef;
-    --white: #fff;
-    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  
-    /* Шрифты (пример) */
-    --font-family-sans: 'Inter', sans-serif; /* Современный шрифт без засечек */
-    --font-family-heading: 'Playfair Display', serif; /* Элегантный шрифт с засечками для заголовков */
-  }
-  
-  body {
-    font-family: var(--font-family-sans);
-    line-height: 1.6;
-    margin: 0;
-    background-color: var(--background-color);
-    color: var(--text-color);
-  }
-  
-  /* Контейнер */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  /* Хедер */
-  .header {
-      padding: 1rem 0; /* Уменьшили отступы*/
-      text-align: center;
-  }
-  
-  .header-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.5rem; /*Уменьшили отступ*/
-  }
-  .header-top h1{
-      font-size: 2rem; /*Уменьшили размер шрифта*/
-      margin: 0 auto;
-      font-family: var(--font-family-heading);
-      font-weight: 700;
-      color: var(--secondary-color);
-  }
-  
-  /* Поле поиска */
-  .search-wrapper {
-    position: relative;
-    max-width: 500px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-  }
-  
-  #search-input {
-      width: 100%;
-      padding: 0.6rem 1rem; /*Немного уменьшили отступы*/
-      border: 1px solid var(--light-gray);
-      border-radius: 25px;
-      font-size: 0.9rem; /*Немного уменьшили шрифт*/
-      transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
-  }
-  
-  #search-input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(255, 87, 51, 0.5);
-  }
-  
-  .search-icon {
-    position: absolute;
-    top: 50%;
-    right: 1rem;
-    transform: translateY(-50%);
-    color: var(--secondary-color);
-    pointer-events: none;
-  }
-  
-  /* Фильтры категорий */
-  .category-filters {
-      margin-bottom: 0.5rem; /*Уменьшили отступ*/
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: center;
-  }
-  
-  .category-button {
-    background-color: var(--light-gray);
-    color: var(--text-color);
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out;
-    font-size: 1rem;
-    white-space: nowrap;
-  }
-  
-  .category-button:hover {
-      background-color: var(--primary-color);
-      color: var(--white);
-      transform: scale(1.05);
-  }
-  
-  .category-button.active {
-      background-color: var(--primary-color);
-      color: var(--white);
-  }
-  
-  /* Список рецептов */
-  .recipe-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    padding: 2rem 0;
-  }
-  
-  .recipe-item {
-    background-color: var(--white);
-    border-radius: 15px;
-    box-shadow: var(--box-shadow);
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .recipe-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  .recipe-item img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-bottom: 1px solid var(--light-gray);
-    border-radius: 15px 15px 0 0;
-    transition: transform 0.3s ease-in-out;
-    cursor: pointer;
-  }
-  
-  .recipe-item:hover img {
-    transform: scale(1.1);
-  }
-  
-  .recipe-item-content {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-  
-  .recipe-item a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .recipe-item h2 {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    font-size: 1.35rem;
-    font-family: var(--font-family-heading);
-    font-weight: 700;
-    cursor: pointer;
-  }
-  
-  .recipe-item p {
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-    flex-grow: 1;
-  }
-  
-  .recipe-item button {
-    background-color: var(--primary-color);
-    color: var(--white);
-    border: none;
-    padding: 0.75rem 1.25rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-    font-size: 1rem;
-    align-self: flex-start;
-    margin-top: auto;
+  /* Цветовая палитра */
+  --primary-color: #ff5733;  /* Оранжевый */
+  --secondary-color: #343a40; /* Темно-серый */
+  --accent-color: #c92a2a;   /* Красный */
+  --background-color: #f8f9fa;
+  --text-color: #212529;
+  --light-gray: #e9ecef;
+  --white: #fff;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  /* Шрифты */
+  --font-family-sans: 'Inter', sans-serif;
+  --font-family-heading: 'Playfair Display', serif;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  line-height: 1.6;
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Контейнер */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Хедер */
+.header {
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.header-top h1 {
+  font-size: 2rem;
+  margin: 0 auto;
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+
+/* Поле поиска */
+.search-wrapper {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+#search-input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 25px;
+  font-size: 0.9rem;
+  transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(255, 87, 51, 0.5);
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  color: var(--secondary-color);
+  pointer-events: none;
+}
+
+/* Фильтры категорий */
+.category-filters {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.category-button {
+  background-color: var(--light-gray);
+  color: var(--text-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.category-button:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+.category-button.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* Список рецептов */
+.recipe-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.recipe-item {
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.recipe-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--light-gray);
+  border-radius: 15px 15px 0 0;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.recipe-item:hover img {
+  transform: scale(1.1);
+}
+
+.recipe-item-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.recipe-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.recipe-item h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.35rem;
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.recipe-item p {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.recipe-item button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  font-size: 1rem;
+  align-self: flex-start;
+  margin-top: auto;
 }
 
 .recipe-item button:hover {
-    background-color: darken(var(--primary-color), 10%);
-    color: var(--secondary-color); /* Темно-серый текст при наведении */
-    transform: scale(1.05);
+  background-color: darken(var(--primary-color), 10%);
+  color: var(--secondary-color); /* Добавлено */
+  transform: scale(1.05);
 }
-  
-  /* Категории на карточке рецепта */
-  .recipe-categories {
-    margin-top: 0.75rem;
-  }
-  
-  .category-badge {
-    display: inline-block;
-    background-color: var(--light-gray);
-    color: var(--text-color);
-    padding: 0.3rem 0.6rem;
-    border-radius: 25px;
-    font-size: 0.8rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0.3rem;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out;
-  }
-  
-  .category-badge:hover {
-      background-color: var(--primary-color);
-      color: var(--white);
-      transform: scale(1.1);
-  }
-  
-  /* Детали рецепта */
-  .recipe-details {
-    display: none;
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: var(--white);
-    border-radius: 15px;
-    box-shadow: var(--box-shadow);
-    transition: box-shadow 0.3s ease-in-out;
-  }
-  
-  .recipe-details.active {
-    display: block;
-  }
-  
-  .recipe-details h2 {
-    margin-top: 0;
-    font-size: 2rem;
-    border-bottom: 2px solid var(--secondary-color);
-    padding-bottom: 0.75rem;
-    margin-bottom: 1.5rem;
-    font-family: var(--font-family-heading);
-    font-weight: 700;
-  }
-  
-  .recipe-details section {
-    margin-bottom: 2rem;
-  }
-  
-  .recipe-details ul,
-  .recipe-details ol {
-    padding-left: 1.5rem;
-    list-style: disc;
-  }
-  
-  .recipe-details ol {
-    list-style: decimal;
-  }
-  
-  .recipe-details li {
-    margin-bottom: 0.75rem;
-  }
-  
-  .recipe-details img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    display: block;
-    margin: 0 auto;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .recipe-details:hover img {
-    transform: scale(1.05);
-  }
-  
-  .recipe-details #recipe-categories ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  
-  .recipe-details #recipe-categories li {
-    background-color: var(--light-gray);
-    color: var(--text-color);
-    padding: 0.3rem 0.6rem;
-    border-radius: 25px;
-    font-size: 0.8rem;
-  }
-  
-  #recipe-media iframe {
-    width: 100%;
-    max-width: 560px;
-    height: 315px;
-    border: none;
-    border-radius: 10px;
-    display: block;
-    margin: 1rem auto;
-  }
-  
-  .back-button {
-    background-color: var(--secondary-color);
-    color: var(--white);
-    border: none;
-    padding: 0.75rem 1.25rem;
-    border-radius: 25px;
-    cursor: pointer;
-    margin-bottom: 1rem;
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-    font-size: 1rem;
+
+/* Категории на карточке рецепта */
+.recipe-categories {
+  margin-top: 0.75rem;
+}
+
+.category-badge {
+  display: inline-block;
+  background-color: var(--light-gray);
+  color: var(--text-color);
+  padding: 0.3rem 0.6rem;
+  border-radius: 25px;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.3rem;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.category-badge:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: scale(1.1);
+}
+
+/* Детали рецепта */
+.recipe-details {
+  display: none;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.recipe-details.active {
+  display: block;
+}
+
+/* Обертка для контента деталей рецепта */
+.recipe-details-content {
+  display: flex;
+  flex-direction: column; /* По умолчанию - колонка */
+  gap: 1.5rem; /* Расстояние между элементами */
+}
+
+.recipe-details-image {
+  width: 100%; /* Ширина на всю доступную область */
+  border-radius: 10px;
+   transition: transform 0.3s ease-in-out;
+}
+.recipe-details:hover .recipe-details-image {
+  transform: scale(1.05);
+}
+
+.recipe-text-content{
+  width: 100%;
+}
+
+.recipe-details h2 {
+  margin-top: 0;
+  font-size: 2rem;
+  border-bottom: 2px solid var(--secondary-color);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+}
+
+.recipe-details section {
+  margin-bottom: 2rem;
+}
+
+.recipe-details ul,
+.recipe-details ol {
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+
+.recipe-details ol {
+  list-style: decimal;
+}
+
+.recipe-details li {
+  margin-bottom: 0.75rem;
+}
+
+.recipe-details #recipe-categories ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.recipe-details #recipe-categories li {
+  background-color: var(--light-gray);
+  color: var(--text-color);
+  padding: 0.3rem 0.6rem;
+  border-radius: 25px;
+  font-size: 0.8rem;
+}
+
+#recipe-media iframe {
+  width: 100%;
+  max-width: 560px;
+  height: 315px;
+  border: none;
+  border-radius: 10px;
+  display: block;
+  margin: 1rem auto 0;
+}
+
+.back-button {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  font-size: 1rem;
 }
 
 .back-button:hover {
-    background-color: darken(var(--secondary-color), 10%);
-    color: var(--light-gray); /* Светло-серый текст при наведении */
-    transform: scale(1.05);
+  background-color: darken(var(--secondary-color), 10%);
+  color: var(--light-gray);
+  transform: scale(1.05);
 }
 
-  
-  /* Спиннер */
-  .loader {
-    border: 4px solid var(--light-gray);
-    border-top: 4px solid var(--secondary-color);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    margin: 30px auto;
-  }
-  
-  @keyframes spin {
-    0% {
+/* Спиннер */
+.loader {
+  border: 4px solid var(--light-gray);
+  border-top: 4px solid var(--secondary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 30px auto;
+}
+
+@keyframes spin {
+  0% {
       transform: rotate(0deg);
-    }
-  
-    100% {
+  }
+
+  100% {
       transform: rotate(360deg);
-    }
   }
-  
-  /* Подвал */
-  .footer {
-    background-color: var(--secondary-color);
-    color: var(--white);
-    padding: 2rem 0;
-    text-align: center;
-    margin-top: 2rem;
+}
+
+/* Подвал */
+.footer {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.about h2 {
+  font-family: var(--font-family-heading);
+  font-size: 1.75rem;
+  color: var(--white);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Медиа-запросы (адаптивность) */
+
+/* Средние и большие экраны */
+@media (min-width: 769px) {
+  .header-top {
+      flex-wrap: nowrap;
+      gap: 1rem;
   }
-  
-  .about h2 {
-    font-family: var(--font-family-heading);
-    font-size: 1.75rem;
-    color: var(--white);
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
+
+  .category-filters {
+      margin-bottom: 0;
+      justify-content: flex-end;
   }
-  
-  /* Медиа-запросы (адаптивность) */
-  @media (max-width: 768px) {
-    .recipe-list {
+
+  /* Детали рецепта */
+  .recipe-details-content {
+      flex-direction: row; /* Изображение и текст в строку */
+  }
+
+  .recipe-details-image {
+      width: 40%; /* Ширина изображения */
+      margin-right: 2rem; /* Отступ справа */
+  }
+    .recipe-text-content {
+      width: 60%; /* Ширина текстового контента */
+  }
+  /*Если видео, а не картинка*/
+   #recipe-media iframe{
+      width: 40%;
+      margin-right: 2rem;
+  }
+
+}
+
+/* Маленькие экраны */
+@media (max-width: 768px) {
+  .recipe-list {
       grid-template-columns: 1fr;
-    }
-  
-    #recipe-media iframe {
-      height: auto;
-    }
-  
-    .category-filters {
+  }
+
+  .category-filters {
       justify-content: flex-start;
-    }
-  
-    .header h1 {
+  }
+
+  .header h1 {
       font-size: 1.8rem;
       margin: 0 0 0.5rem 0;
-    }
-  
-    .header-top {
+  }
+
+  .header-top {
       flex-direction: column;
-    }
   }
-  /* Средние экраны (фильтры и поиск в одну строку) */
-  @media (min-width: 769px) {
-      .header-top {
-          flex-wrap: nowrap; /* Запрещаем перенос на новую строку */
-          gap: 1rem;
-      }
-      .category-filters {
-          margin-bottom: 0;  /*Убираем отступ*/
-          justify-content: flex-end; /*Выравниваем по правому краю*/
-      }
-  }
+}
