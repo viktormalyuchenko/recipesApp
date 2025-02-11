@@ -248,6 +248,15 @@ body {
   position: relative;
 }
 
+.recipe-details-image {
+  max-width: 500px;
+  /* Оставляем */
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto 1.5rem;
+  transition: transform 0.3s ease-in-out;
+}
+
 .recipe-details h2::after {
   content: "";
   position: absolute;
@@ -393,6 +402,11 @@ body {
 @media (max-width: 768px) {
   .recipe-list {
     grid-template-columns: 1fr;
+  }
+
+  .recipe-details-image {
+    width: 100%;
+    max-width: none;
   }
 
   .category-filters {
