@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мои кулинарные шедевры | Коллекция лучших рецептов</title>
-    <meta name="description" content="Лучшие рецепты на любой вкус: от простых завтраков до изысканных ужинов. Пошаговые инструкции, фото, видео и удобный поиск!">
-    <meta name="keywords" content="рецепты, кулинария, еда, блюда, завтраки, обеды, ужины, выпечка, десерты, салаты, супы, напитки">
+    <meta name="description"
+        content="Лучшие рецепты на любой вкус: от простых завтраков до изысканных ужинов. Пошаговые инструкции, фото, видео и удобный поиск!">
+    <meta name="keywords"
+        content="рецепты, кулинария, еда, блюда, завтраки, обеды, ужины, выпечка, десерты, салаты, супы, напитки">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Мои кулинарные шедевры">
@@ -22,39 +25,51 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <!-- Выберите другие шрифты, если хотите -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Выберите другие шрифты, если хотите -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="styles/style.css">
     <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();
-    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
- 
-    ym(99865653, "init", {
-         clickmap:true,
-         trackLinks:true,
-         accurateTrackBounce:true
-    });
- </script>
- <noscript><div><img src="https://mc.yandex.ru/watch/99865653" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
- <!-- /Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(99865653, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/99865653" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
+
 <body>
     <header class="header container">
-         <div class="header-top">
+        <div class="header-top">
             <h1>Мои рецепты</h1>
-              <div id="category-filters" class="category-filters">
+            <div id="category-filters" class="category-filters">
                 <!-- Фильтры категорий -->
             </div>
         </div>
 
         <div class="search-wrapper">
             <input type="text" id="search-input" placeholder="Поиск рецептов...">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="search-icon">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
         </div>
 
     </header>
@@ -64,34 +79,34 @@
             <!-- Рецепты -->
         </div>
 
+
         <div id="recipe-details" class="recipe-details">
             <button id="back-button" class="back-button">← Назад</button>
-              <!--  Добавляем обертку для контента -->
-            <div class="recipe-details-content">
-                <div id="recipe-media"></div>
-                <div class="recipe-text-content">
-                    <h2 id="recipe-title"></h2>
-                    <section id="recipe-ingredients"></section>
-                    <section id="recipe-instructions"></section>
-                    <section id="recipe-notes"></section>
-                    <div id="recipe-categories"></div>
-                 </div>
-            </div>
-
+            <h2 id="recipe-title"></h2>
+            <section id="recipe-media"></section>
+            <section id="recipe-ingredients"></section>
+            <section id="recipe-instructions"></section>
+            <section id="recipe-notes"></section>
+            <div id="recipe-categories"></div>
         </div>
+
+
     </main>
 
     <footer class="footer">
-      <div class="container">
-        <section id="about" class="about">
-            <h2>О сайте</h2>
-            <p>Этот сайт – моя кулинарная книга, где я собираю самые удачные и любимые рецепты. Здесь вы найдете блюда на любой вкус: от простых и быстрых завтраков до праздничных ужинов. Все рецепты проверены мной лично, и я с удовольствием делюсь ими с вами!</p>
-        </section>
-        <p>© <span id="current-year"></span> Мои рецепты</p>
-      </div>
+        <div class="container">
+            <section id="about" class="about">
+                <h2>О сайте</h2>
+                <p>Этот сайт – моя кулинарная книга, где я собираю самые удачные и любимые рецепты. Здесь вы найдете
+                    блюда на любой вкус: от простых и быстрых завтраков до праздничных ужинов. Все рецепты проверены
+                    мной лично, и я с удовольствием делюсь ими с вами!</p>
+            </section>
+            <p>© <span id="current-year"></span> Мои рецепты</p>
+        </div>
 
     </footer>
 
     <script src="scripts/script.js"></script>
 </body>
+
 </html>

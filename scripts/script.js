@@ -37,15 +37,13 @@ function displayRecipeList(recipeArray = recipes) {
     }
 
     recipeItem.innerHTML = `
-            ${
-              recipe.image
-                ? `<img src="${recipe.image}" alt="${recipe.title}" loading="lazy" data-id="${recipe.id}" class="recipe-image">`
-                : ""
-            }  
+            ${recipe.image
+        ? `<img src="${recipe.image}" alt="${recipe.title}" loading="lazy" data-id="${recipe.id}" class="recipe-image">`
+        : ""
+      }  
             <div class="recipe-item-content">
-                <a href="#" class="recipe-title-link" data-id="${recipe.id}"><h2>${
-      recipe.title
-    }</h2></a>
+                <a href="#" class="recipe-title-link" data-id="${recipe.id}"><h2>${recipe.title
+      }</h2></a>
                 <p>${recipe.description || ""}</p>
                 ${categoriesHTML}
                 <button data-id="${recipe.id}">Подробнее</button>
@@ -97,7 +95,7 @@ function showRecipeDetails(recipeId) {
 
 // Функция для заполнения деталей рецепта
 function fillRecipeDetails(recipe) {
-    //Очищаем, чтобы не дублировалось
+  //Очищаем, чтобы не дублировалось
   recipeMedia.innerHTML = "";
   recipeTitle.textContent = "";
   recipeIngredients.innerHTML = "";
@@ -112,8 +110,8 @@ function fillRecipeDetails(recipe) {
   const ingredientsArray = Array.isArray(recipe.ingredients)
     ? recipe.ingredients
     : recipe.ingredients
-    ? recipe.ingredients.split("\n")
-    : [];
+      ? recipe.ingredients.split("\n")
+      : [];
   ingredientsArray.forEach(ingredient => {
     const listItem = document.createElement("li");
     listItem.textContent = ingredient;
@@ -126,8 +124,8 @@ function fillRecipeDetails(recipe) {
   const instructionsArray = Array.isArray(recipe.instructions)
     ? recipe.instructions
     : recipe.instructions
-    ? recipe.instructions.split("\n")
-    : [];
+      ? recipe.instructions.split("\n")
+      : [];
   instructionsArray.forEach(step => {
     const listItem = document.createElement("li");
     listItem.textContent = step;
@@ -135,6 +133,7 @@ function fillRecipeDetails(recipe) {
   });
   recipeInstructions.appendChild(instructionsList);
 
+  recipeMedia.innerHTML = "<h2>Фото и видео</h2>"; // Добавили заголовок
   if (recipe.image) {
     const image = document.createElement("img");
     image.src = recipe.image;
@@ -145,7 +144,6 @@ function fillRecipeDetails(recipe) {
   }
 
   if (recipe.youtube) {
-    recipeMedia.innerHTML += "<h2>Видео</h2>";
     const iframe = document.createElement("iframe");
     iframe.src = `https://www.youtube.com/embed/${recipe.youtube}`;
     iframe.allowFullscreen = true;
