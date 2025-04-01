@@ -1,64 +1,157 @@
 /* Общие стили */
 :root {
   /* Цветовая палитра */
-  --primary-color: #ff5733;
-  /* Оранжевый */
-  --secondary-color: #343a40;
-  /* Темно-серый */
-  --accent-color: #c92a2a;
-  /* Красный */
-  --background-color: #f8f9fa;
-  --text-color: #212529;
-  --light-gray: #e9ecef;
+  --primary-color: #f57c00;
+  /* Более теплый оранжевый */
+  --secondary-color: #424242;
+  /* Чуть светлее темно-серый */
+  --accent-color: #e53935;
+  /* Немного приглушенный красный */
+  --background-color: #fdfdfd;
+  /* Очень светлый, почти белый фон */
+  --text-color: #333;
+  /* Стандартный темный текст */
+  --light-gray: #eeeeee;
+  /* Светло-серый для границ/фонов */
+  --medium-gray: #bdbdbd;
+  /* Средне-серый для иконок/доп. текста */
   --white: #fff;
-  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  /* Более мягкая тень */
+  --box-shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.12);
+  /* Усиленная тень при наведении */
 
   /* Шрифты */
   --font-family-sans: 'Inter', sans-serif;
   --font-family-heading: 'Playfair Display', serif;
+
+  /* Радиусы скругления */
+  --border-radius-small: 8px;
+  --border-radius-medium: 16px;
+  --border-radius-large: 24px;
+  --transition-speed: 0.3s;
+  /* Для плавных переходов */
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-family-sans);
-  line-height: 1.6;
+  line-height: 1.7;
+  /* Немного увеличим для читаемости */
   margin: 0;
   background-color: var(--background-color);
   color: var(--text-color);
-  font-size: 16px;
+  font-size: 17px;
+  /* Чуть крупнее базовый шрифт */
+  -webkit-font-smoothing: antialiased;
+  /* Улучшение рендеринга шрифтов */
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Контейнер */
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
+  /* Немного шире */
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
+  /* Увеличим отступы по бокам */
 }
 
 /* Хедер */
 .header {
-  padding: 1rem 0;
+  padding: 1.5rem 0;
+  /* Увеличим отступ */
   text-align: center;
+  border-bottom: 1px solid var(--light-gray);
+  /* Добавим тонкую линию */
+  margin-bottom: 2rem;
+  /* Увеличим отступ снизу */
 }
 
 .header-top {
   display: flex;
+  flex-wrap: wrap;
+  /* Разрешим перенос на мобильных */
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  gap: 1rem;
+  /* Добавим отступ между элементами */
+  margin-bottom: 1.5rem;
+  /* Увеличим отступ до поиска */
 }
 
 .header-top h1 {
-  font-size: 2rem;
-  margin: 0 auto;
+  font-size: 2.5rem;
+  /* Крупнее заголовок */
+  margin: 0;
+  /* Убираем лишние отступы */
   font-family: var(--font-family-heading);
   font-weight: 700;
   color: var(--secondary-color);
 }
 
+/* Фильтры категорий */
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  /* Увеличим отступ */
+  justify-content: center;
+  /* Центрируем */
+  margin-bottom: 0.5rem;
+  /* Восстанавливаем отступ снизу для общей компоновки */
+}
+
+.category-button {
+  background-color: var(--white);
+  color: var(--secondary-color);
+  border: 1px solid var(--light-gray);
+  /* Добавим рамку */
+  padding: 0.6rem 1.2rem;
+  /* Увеличим паддинг */
+  border-radius: var(--border-radius-large);
+  /* Используем переменную */
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  /* Плавный переход для всего */
+  font-size: 0.95rem;
+  /* Чуть крупнее */
+  white-space: nowrap;
+  font-weight: 500;
+  /* Сделаем шрифт пожирнее */
+}
+
+.category-button:hover {
+  background-color: var(--light-gray);
+  border-color: var(--medium-gray);
+  transform: translateY(-2px);
+  /* Небольшой подъем */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.category-button.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-color: var(--primary-color);
+  font-weight: 700;
+}
+
+.category-button.active:hover {
+  background-color: #e66f00;
+  /* Чуть темнее при наведении на активную */
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+
 /* Поле поиска */
 .search-wrapper {
   position: relative;
-  max-width: 500px;
+  max-width: 600px;
+  /* Шире поле поиска */
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -66,96 +159,97 @@ body {
 
 #search-input {
   width: 100%;
-  padding: 0.6rem 1rem;
+  padding: 0.8rem 2.5rem 0.8rem 1.5rem;
+  /* Увеличим паддинги, справа больше места для иконки */
   border: 1px solid var(--light-gray);
-  border-radius: 25px;
-  font-size: 0.9rem;
-  transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  border-radius: var(--border-radius-large);
+  font-size: 1rem;
+  /* Крупнее шрифт в поиске */
+  transition: all var(--transition-speed) ease;
+  background-color: var(--white);
 }
 
 #search-input:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 5px rgba(255, 87, 51, 0.5);
+  box-shadow: 0 0 0 3px rgba(245, 124, 0, 0.2);
+  /* Более заметный фокус */
+  background-color: var(--white);
 }
 
 .search-icon {
   position: absolute;
   top: 50%;
-  right: 1rem;
+  right: 1.2rem;
+  /* Чуть подвинем иконку */
   transform: translateY(-50%);
-  color: var(--secondary-color);
+  color: var(--medium-gray);
+  /* Используем средний серый */
   pointer-events: none;
+  transition: color var(--transition-speed) ease;
 }
 
-/* Фильтры категорий */
-.category-filters {
-  margin-bottom: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-.category-button {
-  background-color: var(--light-gray);
-  color: var(--text-color);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out;
-  font-size: 1rem;
-  white-space: nowrap;
-}
-
-.category-button:hover {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  /* Изменено */
-  transform: scale(1.05);
-}
-
-.category-button.active {
-  background-color: var(--primary-color);
-  color: var(--white);
+#search-input:focus+.search-icon {
+  color: var(--primary-color);
+  /* Иконка тоже меняет цвет при фокусе */
 }
 
 /* Список рецептов */
 .recipe-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.5rem;
+  /* Больше расстояние между карточками */
   padding: 2rem 0;
 }
 
 .recipe-item {
   background-color: var(--white);
-  border-radius: 15px;
+  border-radius: var(--border-radius-medium);
+  /* Используем переменную */
   box-shadow: var(--box-shadow);
   overflow: hidden;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
   display: flex;
   flex-direction: column;
+  border: 1px solid var(--light-gray);
+  /* Тонкая граница */
 }
 
 .recipe-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+  /* Чуть меньше подъем */
+  box-shadow: var(--box-shadow-hover);
+  /* Используем другую тень */
 }
 
-.recipe-item img {
+/* Обертка для картинки для красивого scale */
+.recipe-image-wrapper {
+  overflow: hidden;
+  height: 250px;
+  /* Соответствует высоте картинки */
+  border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+  /* Скругляем контейнер */
+  position: relative;
+  /* Для возможного добавления элементов поверх картинки */
+}
+
+.recipe-item img.recipe-image {
+  /* Уточним селектор */
   width: 100%;
-  height: 220px;
+  height: 100%;
+  /* Заполняет wrapper */
   object-fit: cover;
-  border-bottom: 1px solid var(--light-gray);
-  border-radius: 15px 15px 0 0;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.4s ease;
+  /* Замедляем анимацию картинки */
   cursor: pointer;
+  display: block;
+  /* Убираем возможный нижний отступ */
 }
 
-.recipe-item:hover img {
-  transform: scale(1.1);
+.recipe-item:hover img.recipe-image {
+  transform: scale(1.05);
+  /* Чуть меньше увеличение */
 }
 
 .recipe-item-content {
@@ -163,204 +257,296 @@ body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  /* Занимает все доступное пространство по высоте */
 }
 
-.recipe-item a {
+.recipe-item a.recipe-title-link {
+  /* Стилизуем ссылку-заголовок */
   text-decoration: none;
   color: inherit;
+}
+
+.recipe-item a.recipe-title-link:hover h2 {
+  color: var(--primary-color);
+  /* Меняем цвет заголовка при наведении на ссылку */
 }
 
 .recipe-item h2 {
   margin-top: 0;
   margin-bottom: 0.75rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  /* Чуть крупнее */
   font-family: var(--font-family-heading);
   font-weight: 700;
+  line-height: 1.3;
+  /* Улучшаем межстрочный интервал заголовка */
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  min-height: 4.5rem;
+  /* Оставляем для кликабельности */
+  transition: color var(--transition-speed) ease;
+  /* Плавный переход цвета */
 }
 
 .recipe-item p {
   color: var(--secondary-color);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  /* Больше отступ под описанием */
   flex-grow: 1;
+  /* Позволяет описанию растягиваться */
   font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Категории на карточке рецепта */
+.recipe-categories {
+  margin-bottom: 1rem;
+  /* Отступ снизу перед кнопкой */
+  margin-top: auto;
+  /* Прижимаем к низу перед кнопкой, если описание короткое */
+  padding-top: 0.5rem;
+  /* Небольшой отступ сверху */
+}
+
+.category-badge {
+  display: inline-block;
+  background-color: var(--light-gray);
+  color: var(--secondary-color);
+  /* Темнее текст */
+  padding: 0.4rem 0.8rem;
+  /* Увеличим */
+  border-radius: var(--border-radius-small);
+  /* Используем переменную */
+  font-size: 0.85rem;
+  /* Чуть меньше */
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  /* Добавим нижний отступ для переноса */
+  transition: all var(--transition-speed) ease;
+  font-weight: 500;
+}
+
+.category-badge:hover {
+  background-color: var(--medium-gray);
+  color: var(--white);
+  transform: scale(1.05);
 }
 
 .recipe-item button {
   background-color: var(--primary-color);
   color: var(--white);
   border: none;
-  padding: 0.75rem 1.25rem;
-  border-radius: 25px;
+  padding: 0.8rem 1.5rem;
+  /* Увеличим кнопку */
+  border-radius: var(--border-radius-large);
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition: all var(--transition-speed) ease;
   font-size: 1rem;
+  font-weight: 600;
+  /* Пожирнее текст кнопки */
   align-self: flex-start;
-  margin-top: auto;
+  /* Кнопка слева */
+  margin-top: 1rem;
+  /* Отступ от категорий или описания */
 }
 
 .recipe-item button:hover {
-  background-color: darken(var(--primary-color), 10%);
-  color: var(--secondary-color);
-  /* Изменено */
-  transform: scale(1.05);
-}
-
-/* Категории на карточке рецепта */
-.recipe-categories {
-  margin-top: 0.75rem;
-}
-
-.category-badge {
-  display: inline-block;
-  background-color: var(--light-gray);
-  color: var(--text-color);
-  padding: 0.3rem 0.6rem;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  margin-right: 0.5rem;
-  margin-bottom: 0.3rem;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.category-badge:hover {
-  background-color: var(--primary-color);
+  background-color: #e66f00;
+  /* Темнее оранжевый */
   color: var(--white);
-  transform: scale(1.1);
+  transform: scale(1.03);
+  /* Небольшое увеличение */
+  box-shadow: 0 4px 10px rgba(245, 124, 0, 0.3);
+  /* Тень в цвет кнопки */
 }
+
 
 /* Детали рецепта */
 .recipe-details {
   display: none;
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 2rem;
+  max-width: 900px;
+  /* Сделаем шире */
+  margin: 3rem auto;
+  /* Больше отступ сверху/снизу */
+  padding: 2.5rem;
+  /* Больше внутренний отступ */
   background-color: var(--white);
-  border-radius: 15px;
+  border-radius: var(--border-radius-medium);
   box-shadow: var(--box-shadow);
-  transition: box-shadow 0.3s ease-in-out;
-
-  /* "Схлопываем" пустой блок */
-  height: 0;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  border: none;
+  border: 1px solid var(--light-gray);
 }
 
 .recipe-details.active {
   display: block;
-  height: auto;
-  padding: 2rem;
-  margin: 2rem auto;
-  border: 1px solid var(--light-gray);
 }
 
-.recipe-details-image {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 10px;
-  display: block;
-  margin: 0 auto 1.5rem;
-  transition: transform 0.3s ease-in-out;
+/* Кнопка Назад */
+.back-button {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border: none;
+  padding: 0.7rem 1.3rem;
+  /* Увеличим */
+  border-radius: var(--border-radius-large);
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  /* Больше отступ */
+  transition: all var(--transition-speed) ease;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: inline-flex;
+  /* Для выравнивания иконки */
+  align-items: center;
+  gap: 0.3em;
+  /* Отступ для иконки */
 }
 
-.recipe-details:hover .recipe-details-image {
+.back-button::before {
+  content: '←';
+  /* Стрелка */
+  /* margin-right: 0.3em; Убрали, используем gap */
+}
+
+.back-button:hover {
+  background-color: #212121;
+  /* Темнее */
+  color: var(--white);
   transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.recipe-details h2 {
+
+/* Заголовок рецепта */
+.recipe-details h2#recipe-title {
+  /* Уточняем селектор */
   margin-top: 0;
-  font-size: 2.2rem;
-  margin-bottom: 1.2rem;
+  /* Убираем отступ сверху, т.к. кнопка "Назад" выше */
+  font-size: 2.8rem;
+  /* Крупнее */
+  margin-bottom: 2rem;
+  /* Больше отступ */
   font-family: var(--font-family-heading);
   font-weight: 700;
   position: relative;
+  padding-bottom: 0.5rem;
+  /* Добавим отступ для линии */
+  line-height: 1.2;
 }
 
-.recipe-details h2::after {
+.recipe-details h2#recipe-title::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -4px;
-  width: 60px;
-  height: 3px;
+  bottom: 0;
+  /* Прижимаем к низу текста (с учетом padding-bottom) */
+  width: 80px;
+  /* Длиннее линия */
+  height: 4px;
+  /* Толще линия */
   background-color: var(--primary-color);
+  border-radius: 2px;
+  /* Скруглим линию */
 }
 
+/* Секции внутри деталей */
 .recipe-details section {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
+  /* Увеличим отступ между секциями */
   padding: 1.5rem;
-  border-radius: 10px;
+  border-radius: var(--border-radius-small);
   border: 1px solid var(--light-gray);
-  background-color: var(--background-color);
+  background-color: #fafafa;
+  /* Чуть отличный фон для секций */
 }
 
-.recipe-details section:last-child {
+.recipe-details section h2 {
+  font-family: var(--font-family-heading);
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
   border-bottom: 1px solid var(--light-gray);
-  border-radius: 0 0 10px 10px;
+  padding-bottom: 0.5rem;
+}
+
+
+.recipe-details section:last-of-type {
+  /* Правильный селектор для последней секции */
   margin-bottom: 1rem;
 }
 
-.recipe-details ul,
-.recipe-details ol {
-  padding-left: 2rem;
-  list-style: disc;
+/* Картинка в деталях */
+#recipe-media .recipe-details-image {
+  /* Уточняем селектор */
+  width: 100%;
+  max-width: 100%;
+  /* Убираем ограничение */
+  height: auto;
+  /* Автоматическая высота */
+  border-radius: var(--border-radius-medium);
+  /* Скругляем */
+  display: block;
+  margin: 0 auto 1.5rem;
+  /* Картинка идет после заголовка секции */
 }
 
+/* Видео */
+#recipe-media iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  /* Современный способ сделать отзывчивым */
+  height: auto;
+  /* Должно работать с aspect-ratio */
+  max-width: 700px;
+  /* Увеличим максимальную ширину */
+  border: none;
+  border-radius: var(--border-radius-medium);
+  display: block;
+  margin: 1.5rem auto 0;
+  /* Отступ сверху, если есть картинка */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Добавим тень */
+}
+
+/* Списки */
+.recipe-details ul,
 .recipe-details ol {
-  list-style: decimal;
+  padding-left: 1.5rem;
+  /* Чуть меньше отступ слева */
+  list-style-position: outside;
+  /* Маркеры снаружи */
+  margin-top: 0;
+  /* Убираем лишний отступ у списка */
 }
 
 .recipe-details li {
-  margin-bottom: 0.75rem;
-  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  /* Чуть больше отступ */
+  font-size: 1.05rem;
+  /* Чуть крупнее текст пунктов */
+  line-height: 1.7;
+  padding-left: 0.5rem;
+  /* Небольшой отступ текста от маркера */
 }
 
+/* Категории в деталях */
 .recipe-details #recipe-categories ul {
   list-style: none;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  /* Увеличим отступ */
 }
 
 .recipe-details #recipe-categories li {
   background-color: var(--light-gray);
-  color: var(--text-color);
-  padding: 0.3rem 0.6rem;
-  border-radius: 25px;
+  color: var(--secondary-color);
+  padding: 0.5rem 1rem;
+  /* Увеличим */
+  border-radius: var(--border-radius-large);
   font-size: 0.9rem;
-}
-
-#recipe-media iframe {
-  width: 100%;
-  max-width: 560px;
-  border: none;
-  border-radius: 10px;
-  display: block;
-  margin: 1rem auto 0;
-}
-
-.back-button {
-  background-color: var(--secondary-color);
-  color: var(--white);
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 25px;
-  cursor: pointer;
-  margin-bottom: 1rem;
-  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-  font-size: 0.9rem;
-}
-
-.back-button:hover {
-  background-color: darken(var(--secondary-color), 10%);
-  color: var(--light-gray);
-  transform: scale(1.05);
+  font-weight: 500;
+  margin: 0;
+  /* Убираем лишние отступы у li */
 }
 
 /* Спиннер */
@@ -387,19 +573,57 @@ body {
 /* Подвал */
 .footer {
   background-color: var(--secondary-color);
-  color: var(--white);
-  padding: 2rem 0;
+  color: var(--light-gray);
+  /* Сделаем текст в футере светлее */
+  padding: 3rem 0 2rem 0;
+  /* Увеличим отступы */
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 4rem;
+  /* Больше отступ от контента */
+  font-size: 0.95rem;
+}
+
+.footer .container {
+  max-width: 800px;
+  /* Ограничим ширину контента в футере */
+}
+
+.about {
+  margin-bottom: 2rem;
+  /* Отступ под блоком "О сайте" */
 }
 
 .about h2 {
   font-family: var(--font-family-heading);
-  font-size: 1.75rem;
+  font-size: 1.8rem;
+  /* Чуть крупнее */
   color: var(--white);
+  /* Белый заголовок */
   border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  /* Больше отступ под линией */
+  margin-top: 0;
+  /* Убираем верхний отступ */
+  margin-bottom: 1.5rem;
+  /* Больше отступ под заголовком */
+  display: inline-block;
+  /* Чтобы линия была по ширине текста */
+}
+
+.about p {
+  line-height: 1.8;
+  /* Увеличим межстрочный интервал */
+  color: #e0e0e0;
+  /* Еще светлее текст описания */
+  margin-top: 0;
+}
+
+.footer p#copyright {
+  /* Добавим ID для копирайта для точности */
+  margin-top: 2rem;
+  color: var(--medium-gray);
+  /* Сделаем копирайт менее заметным */
+  font-size: 0.9rem;
 }
 
 /* Медиа-запросы (адаптивность) */
@@ -410,33 +634,120 @@ body {
   }
 
   .category-filters {
-    margin-bottom: 0;
     justify-content: flex-end;
+    /* Кнопки справа на десктопе */
+    margin-bottom: 0;
+    /* Убираем отступ снизу на десктопе */
   }
 }
 
 @media (max-width: 768px) {
-  .recipe-list {
-    grid-template-columns: 1fr;
+  body {
+    font-size: 16px;
+    /* Возвращаем стандартный размер на мобильных */
   }
 
-  .category-filters {
-    justify-content: flex-start;
+  .container {
+    padding: 0 16px;
+    /* Уменьшаем отступы на мобильных */
   }
 
-  .header h1 {
-    font-size: 1.8rem;
-    margin: 0 0 0.5rem 0;
+  .header {
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
   }
 
   .header-top {
     flex-direction: column;
+    /* Элементы в столбик */
+    align-items: center;
+    /* Центрируем */
+    gap: 0.5rem;
+    margin-bottom: 1rem;
   }
 
-  .recipe-details-image {
-    width: 100%;
-    /* На мобильных - на всю ширину */
-    max-width: none;
-    /*Убираем ограничение, если оно не нужно*/
+  .header-top h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    /* Отступ под заголовком */
   }
+
+  .category-filters {
+    justify-content: center;
+    /* Фильтры по центру */
+    gap: 0.5rem;
+  }
+
+  .search-wrapper {
+    max-width: 100%;
+    /* Поиск на всю ширину */
+  }
+
+  #search-input {
+    padding: 0.7rem 2.2rem 0.7rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .search-icon {
+    right: 1rem;
+  }
+
+  .recipe-list {
+    grid-template-columns: 1fr;
+    /* Одна колонка */
+    gap: 1.5rem;
+    /* Меньше отступ */
+  }
+
+  .recipe-item h2 {
+    font-size: 1.4rem;
+  }
+
+  .recipe-item p {
+    font-size: 0.95rem;
+  }
+
+  .recipe-details {
+    padding: 1.5rem;
+    /* Меньше паддинг */
+    margin: 2rem auto;
+  }
+
+  .recipe-details h2#recipe-title {
+    font-size: 2.2rem;
+  }
+
+  .recipe-details section h2 {
+    font-size: 1.5rem;
+  }
+
+  .recipe-details li {
+    font-size: 1rem;
+  }
+
+  .footer {
+    padding: 2rem 0 1.5rem 0;
+    margin-top: 2.5rem;
+  }
+
+  .about h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Дополнительные стили для доступности фокуса */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  box-shadow: none;
+  /* Убираем другие тени при фокусе */
+}
+
+#search-input:focus-visible {
+  box-shadow: 0 0 0 3px rgba(245, 124, 0, 0.2);
+  /* Восстанавливаем для поиска */
+  outline: none;
+  /* Убираем стандартный outline */
 }

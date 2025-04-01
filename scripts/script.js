@@ -37,10 +37,12 @@ function displayRecipeList(recipeArray = recipes) {
     }
 
     recipeItem.innerHTML = `
-            ${recipe.image
-        ? `<img src="${recipe.image}" alt="${recipe.title}" loading="lazy" data-id="${recipe.id}" class="recipe-image">`
+    ${recipe.image
+        ? `<div class="recipe-image-wrapper">
+           <img src="${recipe.image}" alt="${recipe.title}" loading="lazy" data-id="${recipe.id}" class="recipe-image">
+         </div>`
         : ""
-      }  
+      } 
             <div class="recipe-item-content">
                 <a href="#" class="recipe-title-link" data-id="${recipe.id}"><h2>${recipe.title
       }</h2></a>
